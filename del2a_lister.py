@@ -36,10 +36,9 @@ with open(csv_file, mode = "r", newline = "") as file:
         skydekke.append(i[6])
         vind.append(i[7])
 
-
+#Tilpasser listen "nedbor" til bruk i oppgave del2f
 for i in range(1, len(nedbor)):
     if "," in nedbor[i]:
         nedbor[i] = nedbor[i].replace(",", ".")
     if nedbor[i] != "-" and nedbor[i] != "":
         nedbor[i] = float(nedbor[i])
-
