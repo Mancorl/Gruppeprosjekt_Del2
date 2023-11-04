@@ -36,6 +36,8 @@ with open(csv_file, mode = "r", newline = "") as file:
         skydekke.append(i[6])
         vind.append(i[7])
 
+################
+
 #Del2e: Tilpasser listen "temperatur"
 for i in range(1, len(temperatur)):
     if "," in temperatur[i]:
@@ -57,6 +59,14 @@ for i in range(1, len(skydekke)):
     if skydekke[i] != "-" and skydekke[i] != "":
         skydekke[i] = float(skydekke[i])
 
+#Del2h: Tilpasser listen "vind"
+for i in range(1, len(vind)):
+    if "," in vind[i]:
+        vind[i] = vind[i].replace(",", ".")
+    if vind[i] != "-" and vind[i] != "":
+        vind[i] = float(vind[i])
+
+##############
 
 #Del2e: Legger til temperaturverdier til en temperatur-dictionary.
 temperatur_dict = {}
@@ -107,3 +117,20 @@ for i in skydekke_dict:
     length = len(skydekke_dict[i])
     if length > 300:
         ny_skydekke_dict[i] = skydekke_dict[i]
+
+
+#Del2h: Legger til vindverdier til en vind-dictionary.
+vind_dict = {}
+for i in range(1, len(tid)):
+    aar = tid[i]
+    if len(aar) > 1 and aar[6:10] not in vind_dict:
+        vind_dict[aar[6:10]] = []
+    elif aar[6:10] in skydekke_dict:
+        vind_dict[aar[6:10]].append(vind[i])
+
+#Del2h: Legger til år med over 300 målinger i ny dictionary.
+ny_vind_dict = {}
+for i in vind_dict:
+    length = len(vind_dict[i])
+    if length > 300:
+        ny_vind_dict[i] = vind_dict[i]
