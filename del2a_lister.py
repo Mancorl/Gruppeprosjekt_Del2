@@ -50,6 +50,13 @@ for i in range(1, len(nedbor)):
     if nedbor[i] != "-" and nedbor[i] != "":
         nedbor[i] = float(nedbor[i])
 
+#Del2g: Tilpasser listen "skydekke"
+for i in range(1, len(skydekke)):
+    if "," in skydekke[i]:
+        skydekke[i] = skydekke[i].replace(",", ".")
+    if skydekke[i] != "-" and skydekke[i] != "":
+        skydekke[i] = float(skydekke[i])
+
 
 #Del2e: Legger til temperaturverdier til en temperatur-dictionary.
 temperatur_dict = {}
@@ -83,3 +90,20 @@ for i in nedbor_dict:
     length = len(nedbor_dict[i])
     if length > 300:
         ny_nedbor_dict[i] = nedbor_dict[i]
+
+
+#Del2g: Legger til skydekkeverdier til en skydekke-dictionary.
+skydekke_dict = {}
+for i in range(1, len(tid)):
+    aar = tid[i]
+    if len(aar) > 1 and aar[6:10] not in skydekke_dict:
+        skydekke_dict[aar[6:10]] = []
+    elif aar[6:10] in skydekke_dict:
+        skydekke_dict[aar[6:10]].append(skydekke[i])
+
+#Del2g: Legger til år med over 300 målinger i ny dictionary.
+ny_skydekke_dict = {}
+for i in skydekke_dict:
+    length = len(skydekke_dict[i])
+    if length > 300:
+        ny_skydekke_dict[i] = skydekke_dict[i]
