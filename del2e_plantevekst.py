@@ -14,25 +14,9 @@ parameter til funksjonen fra del 1 oppgave h)
 """
 
 from del1h_over_fem_v2 import vekst
-from del2a_lister import temperatur
-from del2a_lister import tid
+from del2a_lister import ny_temperatur_dict
 import matplotlib.pyplot as plt
 
-#Legger til temperaturverdier til en temperatur-dictionary.
-temperatur_dict = {}
-for i in range(1, len(tid)):
-    aar = tid[i]
-    if len(aar) > 1 and aar[6:10] not in temperatur_dict:
-        temperatur_dict[aar[6:10]] = []
-    elif aar[6:10] in temperatur_dict:
-        temperatur_dict[aar[6:10]].append(temperatur[i])
-
-#Legger til år med over 300 målinger i ny dictionary.
-ny_temperatur_dict = {}
-for i in temperatur_dict:
-    length = len(temperatur_dict[i])
-    if length > 300:
-        ny_temperatur_dict[i] = temperatur_dict[i]
 
 #Lager dictionary som viser verdien for vekst per år.
 vekst_plante = {key: 0 for key in ny_temperatur_dict.keys()}
@@ -59,5 +43,3 @@ plt.xlabel("År")
 plt.ylabel("Beregnet vekst")
 plt.title("Vekst for den tenkte planten")
 plt.show()
-
-
