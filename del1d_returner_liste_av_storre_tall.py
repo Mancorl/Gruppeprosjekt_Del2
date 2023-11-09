@@ -10,6 +10,6 @@ def differanse(listen, tall):
     nyliste = []
     for i in range(0, len(listen)):
         x = int(listen[i]) - tall
-        if x > 0:
+        if x >= 0:
             nyliste.append(x)
     return nyliste
