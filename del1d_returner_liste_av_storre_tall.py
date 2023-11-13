@@ -9,7 +9,7 @@ Created on Fri Sep 15 10:08:35 2023
 def differanse(listen, tall):
     nyliste = []
     for i in range(0, len(listen)):
-        x = int(listen[i]) - tall
-        if x >= 0:
+        x = int(listen[i])
+        if x >= tall:
             nyliste.append(x)
     return nyliste
